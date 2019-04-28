@@ -5,6 +5,7 @@ import math
 from PIL import Image
 import os
 
+
 # Create folder for avatars storing.
 
 def create_filepath():
@@ -12,6 +13,7 @@ def create_filepath():
     if not os.path.exists(avatar_dir):
         os.mkdir(avatar_dir)
     return avatar_dir
+
 
 # Save the avatars.
 
@@ -25,6 +27,7 @@ def save_avatar(avatar_dir):
         print('Nickname:%s' % friend.nick_name)
         num = num + 1
 
+
 # Avatars jointing.
 
 def joint_avatar(path):
@@ -37,10 +40,10 @@ def joint_avatar(path):
     # Count the avatars' number
     x_lines = math.ceil(math.sqrt(length))
     y_lines = math.ceil(math.sqrt(length))
-    image = Image.new('RGB', (each_size * x_lines, each_size * y_lines ))
+    image = Image.new('RGB', (each_size * x_lines, each_size * y_lines))
     x = 0
     y = 0
-    for(root, dirs, files) in os.walk(path):
+    for (root, dirs, files) in os.walk(path):
         for pic_name in files:
             # Add exception handing.
             try:
@@ -55,6 +58,7 @@ def joint_avatar(path):
                 print("Failed to load avatars.")
         img = image.save(os.getcwd() + "/wechat.png")
         print('Avatars jointing done!')
+
 
 if __name__ == '__main__':
     avatar_dir = create_filepath()
